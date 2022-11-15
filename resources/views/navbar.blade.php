@@ -1,5 +1,5 @@
-<nav class="flex w-full mx-auto p-2 gap-2 items-center justify-between bg-slate-300 rounded-bl-lg rounded-br-lg">
-  <p class="place-self-start px-4 py-2 font-semibold text-2xl text-white">Sistema de cupones</p>
+<nav class="relative flex w-full mx-auto p-2 gap-2 items-center justify-between bg-slate-300 rounded-bl-lg rounded-br-lg">
+  <p class="place-self-start px-4 py-2 font-semibold text-2xl">Sistema de cupones</p>
 
   <div>
     <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/'>Regresar</a>

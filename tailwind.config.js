@@ -4,7 +4,11 @@ module.exports = {
     "./resources/**/*.blade.php"
   ],
   theme: {
-    extend: {},
+    extend: {
+      'fontFamily': {
+        'rosario': 'Rosario'
+      }
+    },
   },
   plugins: [],
 }

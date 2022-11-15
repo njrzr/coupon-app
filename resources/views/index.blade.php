@@ -6,7 +6,7 @@
     <title>User | Coupons Menu</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
-  <body class="box-border bg-slate-200">
+  <body class="relative box-border bg-slate-200 font-rosario">
     @include('navbar')
     @yield('content')
   </body>

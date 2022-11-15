@@ -17,8 +17,9 @@ class CreateCouponsTable extends Migration
       $table->id();
       $table->string('store');
       $table->string('code');
-      $table->integer('coupon_discount');
+      $table->float('coupon_discount');
       $table->integer('coupon_quantity');
+      $table->string('store_image');
       $table->timestamps();
     });
   }

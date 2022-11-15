@@ -1,6 +1,9 @@
+@import url(https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap);
 /*
 ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com
-*//*
+*/
+
+/*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
@@ -338,6 +341,7 @@ button,
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
+
 :disabled {
   cursor: default;
 }
@@ -371,11 +375,12 @@ video {
 }
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
+
 [hidden] {
   display: none;
 }
 
-*, ::before, ::after {
+*, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -422,7 +427,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-::backdrop {
+::backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -468,147 +473,173 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
-.mx-auto {
+.relative{
+  position: relative;
+}
+.mx-auto{
   margin-left: auto;
   margin-right: auto;
 }
-.my-2 {
+.my-2{
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.box-border {
+.my-1{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.mb-4{
+  margin-bottom: 1rem;
+}
+.mt-1{
+  margin-top: 0.25rem;
+}
+.mb-1{
+  margin-bottom: 0.25rem;
+}
+.mt-2{
+  margin-top: 0.5rem;
+}
+.box-border{
   box-sizing: border-box;
 }
-.flex {
+.flex{
   display: flex;
 }
-.h-screen {
-  height: 100vh;
-}
-.w-10\/12 {
-  width: 83.333333%;
-}
-.w-full {
+.w-full{
   width: 100%;
 }
-.flex-row {
-  flex-direction: row;
+.w-10\/12{
+  width: 83.333333%;
 }
-.flex-col {
-  flex-direction: column;
+.w-3\/12{
+  width: 25%;
 }
-.items-start {
-  align-items: flex-start;
+.w-9\/12{
+  width: 75%;
 }
-.items-center {
+.cursor-pointer{
+  cursor: pointer;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+.items-center{
   align-items: center;
 }
-.justify-end {
-  justify-content: flex-end;
-}
-.justify-between {
+.justify-between{
   justify-content: space-between;
 }
-.justify-evenly {
-  justify-content: space-evenly;
-}
-.gap-2 {
+.gap-2{
   gap: 0.5rem;
 }
-.place-self-start {
+.place-self-start{
   place-self: start;
 }
-.self-start {
-  align-self: flex-start;
-}
-.justify-self-start {
-  justify-self: start;
-}
-.rounded-lg {
+.rounded-lg{
   border-radius: 0.5rem;
 }
-.rounded-bl-lg {
+.rounded-sm{
+  border-radius: 0.125rem;
+}
+.rounded-bl-lg{
   border-bottom-left-radius: 0.5rem;
 }
-.rounded-br-lg {
+.rounded-br-lg{
   border-bottom-right-radius: 0.5rem;
 }
-.border {
-  border-width: 1px;
-}
-.border-blue-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity));
-}
-.bg-blue-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
-}
-.bg-slate-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
-}
-.bg-slate-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
-}
-.bg-slate-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
-}
-.bg-slate-200 {
+.bg-slate-200{
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
-.p-2 {
+.bg-slate-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+.bg-slate-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+.bg-red-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+.bg-red-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
+}
+.bg-green-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+.bg-blue-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+.p-2{
   padding: 0.5rem;
 }
-.px-4 {
+.p-4{
+  padding: 1rem;
+}
+.p-1{
+  padding: 0.25rem;
+}
+.p-8{
+  padding: 2rem;
+}
+.px-4{
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.py-2 {
+.py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.text-2xl {
+.text-center{
+  text-align: center;
+}
+.font-rosario{
+  font-family: Rosario;
+}
+.text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
 }
-.font-semibold {
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.font-semibold{
   font-weight: 600;
 }
-.text-white {
+.text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-.antialiased {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.shadow-md {
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.shadow-gray-800 {
-  --tw-shadow-color: #1f2937;
-  --tw-shadow: var(--tw-shadow-colored);
-}
-.transition {
+.transition{
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-.duration-300 {
-  transition-duration: 300ms;
-}
-.duration-150 {
+.duration-150{
   transition-duration: 150ms;
 }
-.hover\:bg-slate-500:hover {
+.hover\:bg-slate-500:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+.active\:bg-slate-500:active{
   --tw-bg-opacity: 1;
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }

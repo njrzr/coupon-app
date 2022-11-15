@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CouponController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,8 @@ Route::get('/', function () {
 Route::get('/new', function () {
   return view('coupons/new');
 });
+
+Route::post('/create', [CouponController::class, 'create'])->name('create');
 
 Route::get('/claimed', function () {
   return view('coupons/claimed');
