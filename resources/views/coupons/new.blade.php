@@ -2,7 +2,10 @@
 
 @section('content')
   @if (session('success'))
-    <p class="w-10/12 mx-auto mt-2 p-2 bg-blue-400 text-center text-xl text-white font-semibold rounded-lg">{{ session('success') }}</p>
+    <div class="relative flex items-center justify-center w-10/12 mx-auto mt-2 p-2 bg-blue-400 rounded-lg" x-data="{ open: true }" x-show="open">
+      <p class="text-center text-xl text-white font-semibold">{{ session('success') }}</p>
+      <button class="absolute right-4 text-white bg-blue-300 px-2 rounded-sm" x-on:click="open = ! open">X</button>
+    </div>
   @endif
 
   <form class="relative flex flex-wrap w-10/12 mx-auto my-2 p-4 rounded-lg bg-slate-300" action="/create" method="POST" enctype="multipart/form-data">
@@ -29,6 +32,9 @@
   </form>
 
   @foreach ($errors->all() as $error)
-    <p class="w-10/12 mx-auto my-1 p-2 bg-red-400 text-base text-white rounded-lg">{{ $error }}</p>
+    <div class="relative flex items-center justify-center w-10/12 mx-auto my-1 p-2 bg-red-400 rounded-lg" x-data="{ open: true }" x-show="open">
+      <p class="text-base text-white">{{ $error }}</p>
+      <button class="absolute right-4 text-white bg-red-300 px-2 rounded-sm" x-on:click="open = ! open">X</button>
+    </div>
   @endforeach
 @endsection

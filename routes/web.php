@@ -28,10 +28,6 @@ Route::get('/claimed', function () {
   return view('coupons/claimed');
 });
 
-Route::get('/update', function () {
-  return view('coupons/update');
-});
-
-Route::get('/list', function () {
-  return view('coupons/list');
-});
+Route::get('/update', [CouponController::class, 'list_update'])->name('list-update');
+Route::post('/update', [CouponController::class, 'update'])->name('update');
+Route::get('/list', [CouponController::class, 'list'])->name('list');
