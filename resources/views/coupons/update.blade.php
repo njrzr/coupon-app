@@ -11,7 +11,7 @@
   <p class="w-11/12 mx-auto my-4 text-4xl text-center">Actualizar cupones.</p>
 
   <div class="grid gap-2 mx-auto mb-2 p-1 rounded-lg w-11/12">
-    <div class="grid grid-cols-6 gap-1 w-full bg-slate-300 rounded-lg p-2">
+    <div class="grid md:grid-cols-6 gap-1 w-full bg-slate-300 rounded-lg p-2">
       <p class="text-center font-semibold text-white bg-slate-400 rounded-lg p-1">Imagen</p>
       <p class="text-center font-semibold text-white bg-slate-400 rounded-lg p-1">Tienda</p>
       <p class="text-center font-semibold text-white bg-slate-400 rounded-lg p-1">Codigo</p>
@@ -21,11 +21,11 @@
     </div>
 
     @foreach ($coupons as $coupon)
-      <div class="grid grid-cols-6 justify-between items-center gap-2 bg-slate-300 rounded-lg p-2 drop-shadow-md">
-        <picture class="col-span-1 flex items-center justify-center">
+      <div class="grid md:grid-cols-6 justify-between items-center gap-2 bg-slate-300 rounded-lg p-2 drop-shadow-md">
+        <picture class="col-span-5 md:col-span-1 flex items-center justify-center">
           <img class="w-12 p-1 rounded-lg object-cover" src="{{ $coupon->store_image }}" alt="Logo de tienda.">
         </picture>
-        <form class="grid grid-cols-5 col-span-5 gap-2 items-center" action="/update" method="POST">
+        <form class="grid md:grid-cols-5 col-span-5 gap-2 items-center" action="/update" method="POST">
           @csrf
           <input type="hidden" name="id" value="{{ $coupon->id }}">
           <input class="p-1 rounded-sm text-center" type="text" name="store" value="{{ $coupon->store }}">
@@ -36,6 +36,9 @@
         </form>
       </div>
     @endforeach
-    {{ $coupons->links() }}
+
+    <div class="w-11/12 mx-auto">
+      {{ $coupons->links() }}
+    </div>
   </div>
 @endsection

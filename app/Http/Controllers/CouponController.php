@@ -92,7 +92,7 @@ class CouponController extends Controller
       'claimed' => $couponStore->claimed + 1
     ]);
 
-    Mail::to($userEmail->email)->send(new CouponSent());
+    // Mail::to($userEmail->email)->send(new CouponSent());
 
     return redirect('/')->with(['claimed' => 'Cupón enviado.', 'open' => true]);
   }

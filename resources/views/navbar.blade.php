@@ -1,7 +1,7 @@
-<nav class="relative flex w-full mx-auto p-2 gap-2 items-center justify-between bg-slate-300 rounded-bl-lg rounded-br-lg">
-  <p class="place-self-start px-4 py-2 font-semibold text-2xl">Sistema de cupones</p>
+<nav class="relative flex w-full mx-auto p-2 gap-2 flex-col md:flex-row items-center justify-between bg-slate-300 rounded-bl-lg rounded-br-lg">
+  <p class="md:place-self-start px-4 py-2 font-semibold text-2xl">Sistema de cupones</p>
 
-  <div>
+  <div class="flex flex-wrap items-center justify-center gap-1 p-1">
     @if (url()->current() != url('/'))
       <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/'>Lista de tiendas</a>
     @endif
