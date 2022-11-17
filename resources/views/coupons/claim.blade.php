@@ -29,7 +29,12 @@
         <input class="text-black p-1 rounded-sm" type="email" id="email" name="email" placeholder="ej: johndoe@mail.com" required />
         @error('email')
         @enderror
-        <button class="mt-2 font-semibold rounded-sm col-span-2 p-2 mx-auto bg-slate-400 active:bg-opacity-75">Reclamar</button>
+
+        @if ($coupon->coupon_quantity - $coupon->claimed != 0)
+          <button class="mt-2 font-semibold rounded-sm col-span-2 p-2 mx-auto bg-slate-400 active:bg-opacity-75">Reclamar</button>
+        @else
+          <button class="mt-2 font-semibold rounded-sm col-span-2 p-2 mx-auto bg-slate-400" disabled>Cupones agotados</button>
+        @endif
       </form>
 
       @foreach ($errors->all() as $error)

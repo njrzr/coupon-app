@@ -2,13 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CouponSent;
 use App\Models\Coupon;
 use App\Models\UserEmail;
-use Faker\Core\Number;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+use function PHPSTORM_META\map;
 
 class CouponController extends Controller
 {
+  public function admin()
+  {
+    return view('/index');
+  }
+
+  public function new()
+  {
+    return view('coupons/new');
+  }
+
+  public function claimed()
+  {
+    $claimed = Coupon::paginate(10);
+
+    return view('coupons/claimed', ['claimed' => $claimed]);
+  }
+
   public function create(Request $request)
   {
     $request->validate([
@@ -72,7 +92,9 @@ class CouponController extends Controller
       'claimed' => $couponStore->claimed + 1
     ]);
 
-    return redirect('/list')->with(['claimed' => 'Cupón enviado.', 'open' => true]);
+    Mail::to($userEmail->email)->send(new CouponSent());
+
+    return redirect('/')->with(['claimed' => 'Cupón enviado.', 'open' => true]);
   }
 
   public function update(Request $request)

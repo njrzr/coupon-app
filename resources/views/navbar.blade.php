@@ -3,7 +3,7 @@
 
   <div>
     @if (url()->current() != url('/'))
-      <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/'>Regresar</a>
+      <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/'>Lista de tiendas</a>
     @endif
 
     @if (url()->current() != url('new'))
@@ -18,8 +18,8 @@
       <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/update'>Actualizar</a>
     @endif
 
-    @if (url()->current() != url('list'))
-      <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/list'>Lista de tiendas</a>
+    @if (url()->current() != url('admin'))
+      <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/admin'>Bienvenido</a>
     @endif
   </div>
 </nav>
