@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       'fontFamily': {
-        'rosario': 'Rosario'
+        'noto': 'Noto Sans'
       }
     },
   },

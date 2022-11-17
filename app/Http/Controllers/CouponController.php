@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coupon;
+use App\Models\UserEmail;
+use Faker\Core\Number;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -10,11 +12,11 @@ class CouponController extends Controller
   public function create(Request $request)
   {
     $request->validate([
-      'store' => ['required'],
-      'store-logo' => ['required'],
-      'coupon-code' => ['required'],
-      'coupon-quantity' => ['required'],
-      'coupon-discount' => ['required']
+      'store' => ['required', 'string'],
+      'store-logo' => ['required', 'string'],
+      'coupon-code' => ['required', 'string'],
+      'coupon-quantity' => ['required', 'integer'],
+      'coupon-discount' => ['required', 'numeric']
     ]);
 
     $coupon = Coupon::create([
@@ -27,7 +29,7 @@ class CouponController extends Controller
 
     $coupon->save();
 
-    return redirect()->back()->with('success', 'Cupon creado.');
+    return redirect()->back()->with(['success' => 'Cupon creado.', 'open' => true]);
   }
 
   public function list()
@@ -36,10 +38,41 @@ class CouponController extends Controller
     return view('coupons/list', ['coupons' => $coupons]);
   }
 
-  public function list_update()
+  public function listUpdate()
   {
     $coupons = Coupon::paginate(10);
     return view('coupons/update', ['coupons' => $coupons]);
+  }
+
+  public function claim(Request $request)
+  {
+    $coupon = Coupon::find($request->id);
+    return view('coupons/claim', ['coupon' => $coupon]);
+  }
+
+  public function sendCoupon(Request $request)
+  {
+    $request->validate([
+      'username' => ['required', 'string'],
+      'phone' => ['required', 'numeric'],
+      'email' => ['required', 'email']
+    ]);
+
+    $couponStore = Coupon::find($request['store-id']);
+
+    $userEmail = UserEmail::create([
+      'username' => $request->username,
+      'email' => $request->email,
+      'phone' => $request->phone,
+      'store_id' => $couponStore->id,
+      'store_name' => $couponStore->store
+    ]);
+
+    $couponStore->update([
+      'claimed' => $couponStore->claimed + 1
+    ]);
+
+    return redirect('/list')->with(['claimed' => 'Cupón enviado.', 'open' => true]);
   }
 
   public function update(Request $request)
@@ -53,8 +86,6 @@ class CouponController extends Controller
       'coupon_quantity' => $request['coupon-quantity']
     ]);
 
-    $coupon->save();
-
-    return redirect()->back()->with('update', 'Cupon actualizado.');
+    return redirect()->back()->with(['update' => 'Cupon actualizado.', 'open' => true]);
   }
 }

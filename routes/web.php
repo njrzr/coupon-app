@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CouponController;
+use App\Models\Coupon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,8 @@ Route::get('/claimed', function () {
   return view('coupons/claimed');
 });
 
-Route::get('/update', [CouponController::class, 'list_update'])->name('list-update');
+Route::get('/claim/{id}', [CouponController::class, 'claim'])->name('claim');
+Route::post('/claim', [CouponController::class, 'sendCoupon'])->name('send-coupon');
+Route::get('/update', [CouponController::class, 'listUpdate'])->name('list-update');
 Route::post('/update', [CouponController::class, 'update'])->name('update');
 Route::get('/list', [CouponController::class, 'list'])->name('list');
