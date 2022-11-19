@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Coupon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -12,14 +13,18 @@ class CouponSent extends Mailable
 {
   use Queueable, SerializesModels;
 
+  public $store;
+  public $user;
+
   /**
    * Create a new message instance.
    *
    * @return void
    */
-  public function __construct()
+  public function __construct($user, $store)
   {
-    //
+    $this->user = $user;
+    $this->store = $store;
   }
 
   /**
@@ -29,6 +34,6 @@ class CouponSent extends Mailable
    */
   public function build()
   {
-    return $this->view('view.name');
+    return $this->view('/email/coupon')->with(['user' => $this->user, 'store' => $this->store]);
   }
 }

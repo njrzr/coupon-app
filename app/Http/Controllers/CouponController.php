@@ -8,8 +8,6 @@ use App\Models\UserEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-use function PHPSTORM_META\map;
-
 class CouponController extends Controller
 {
   public function admin()
@@ -92,9 +90,9 @@ class CouponController extends Controller
       'claimed' => $couponStore->claimed + 1
     ]);
 
-    // Mail::to($userEmail->email)->send(new CouponSent());
+    Mail::to($userEmail->email)->send(new CouponSent($userEmail, $couponStore));
 
-    return redirect('/')->with(['claimed' => 'Cupón enviado.', 'open' => true]);
+    return response()->json(['claimed' => 'Cupón enviado.']);
   }
 
   public function update(Request $request)
