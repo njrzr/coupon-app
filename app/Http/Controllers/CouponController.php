@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\CouponSent;
 use App\Models\Coupon;
 use App\Models\UserEmail;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -90,7 +91,15 @@ class CouponController extends Controller
       'claimed' => $couponStore->claimed + 1
     ]);
 
-    Mail::to($userEmail->email)->send(new CouponSent($userEmail, $couponStore));
+
+    $pdf = Pdf::loadView('email.coupon', ['user' => $userEmail, 'store' => $couponStore]);
+
+    Mail::send('email.message', ['user' => $userEmail, 'store' => $couponStore], function ($message) use ($userEmail, $pdf) {
+      $message->from('no-reply@paradaonline.cat')
+        ->to($userEmail->email)
+        ->subject('¡' . $userEmail->username . ' tu cupon ha llegado.')
+        ->attachData($pdf->output(), 'cupon.pdf');
+    });
 
     return response()->json(['claimed' => 'Cupón enviado.']);
   }

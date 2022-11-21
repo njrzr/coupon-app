@@ -14,18 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// This route list the coupons.
 Route::get('/list', [CouponController::class, 'list'])->name('list');
 
-/* Route to the see the coupon sent on email */
+// Route to the see the coupon sent on email, if you want it, it can be deleted.
 Route::get('/coupon-view', function () {
   return view('/email/coupon');
 });
 
+// These routes are for claim coupons through the app
 // Route::get('/claim/{id}', [CouponController::class, 'claim'])->name('claim');
 // Route::post('/claim', [CouponController::class, 'sendCoupon'])->name('send-coupon');
 
-/* These routes should use the auth middleware */
-
+// These routes should use the auth middleware
 Route::get('/', [CouponController::class, 'admin'])->name('admin');
 Route::get('/new', [CouponController::class, 'new'])->name('new');
 Route::post('/create', [CouponController::class, 'create'])->name('create');
