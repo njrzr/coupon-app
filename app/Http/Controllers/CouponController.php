@@ -8,6 +8,7 @@ use App\Models\UserEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class CouponController extends Controller
 {
@@ -43,12 +44,31 @@ class CouponController extends Controller
       'code' => $request['coupon-code'],
       'coupon_discount' => $request['coupon-discount'],
       'coupon_quantity' => $request['coupon-quantity'],
-      'store_image' => $request['store-logo'],
+      'store_image' => $request['store-logo']
     ]);
 
     $coupon->save();
 
     return redirect()->back()->with(['success' => 'Cupon creado.', 'open' => true]);
+  }
+
+  public function apiCreate(Request $request)
+  {
+    $request->validate([
+      'store' => ['required', 'string'],
+      'store-logo' => ['required', 'string'],
+      'coupon-code' => ['required', 'string']
+    ]);
+
+    $coupon = Coupon::create([
+      'store' => $request['store'],
+      'code' => $request['coupon-code'],
+      'store_image' => $request['store-logo']
+    ]);
+
+    $coupon->save();
+
+    return response()->json(['success' => 'Cupon creado.']);
   }
 
   public function list()
@@ -87,10 +107,11 @@ class CouponController extends Controller
       'store_name' => $couponStore->store
     ]);
 
+    if ($couponStore->claimed >= $couponStore->coupon_quantity) return response()->json(['claimed' => 'Cupones agotados.'], 400);
+
     $couponStore->update([
       'claimed' => $couponStore->claimed + 1
     ]);
-
 
     $pdf = Pdf::loadView('email.coupon', ['user' => $userEmail, 'store' => $couponStore]);
 
@@ -101,7 +122,9 @@ class CouponController extends Controller
         ->attachData($pdf->output(), 'cupon.pdf');
     });
 
-    return response()->json(['claimed' => 'Cupón enviado.']);
+    // Mail::to($userEmail->email)->send(new CouponSent($userEmail, $couponStore));
+
+    return response()->json(['send' => 'Cupón enviado.']);
   }
 
   public function update(Request $request)

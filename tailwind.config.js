@@ -8,9 +8,6 @@ module.exports = {
     extend: {
       'fontFamily': {
         'noto': 'Noto Sans'
-      },
-      'backgroundImage': {
-        'coupon': "url('/coupon.webp')"
       }
     },
   },

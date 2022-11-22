@@ -23,8 +23,8 @@ Route::get('/coupon-view', function () {
 });
 
 // These routes are for claim coupons through the app
-// Route::get('/claim/{id}', [CouponController::class, 'claim'])->name('claim');
-// Route::post('/claim', [CouponController::class, 'sendCoupon'])->name('send-coupon');
+Route::get('/claim/{id}', [CouponController::class, 'claim'])->name('claim');
+Route::post('/claim', [CouponController::class, 'sendCoupon'])->name('send-coupon');
 
 // These routes should use the auth middleware
 Route::get('/', [CouponController::class, 'admin'])->name('admin');
