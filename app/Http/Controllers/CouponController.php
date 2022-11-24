@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\CouponSent;
 use App\Models\Coupon;
 use App\Models\UserEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
 
 class CouponController extends Controller
 {
@@ -27,6 +28,12 @@ class CouponController extends Controller
     $claimed = Coupon::paginate(10);
 
     return view('coupons/claimed', ['claimed' => $claimed]);
+  }
+
+  public function tokenView()
+  {
+    if (isset(Auth::user()->tokens[0]) !== true) return view('/token', ['created' => false]);
+    return view('/token', ['created' => true]);
   }
 
   public function create(Request $request)
@@ -69,6 +76,18 @@ class CouponController extends Controller
     $coupon->save();
 
     return response()->json(['success' => 'Cupon creado.']);
+  }
+
+  public function createToken()
+  {
+    if (isset(Auth::user()->tokens[0]) !== false) {
+      Auth::user()->tokens()->delete();
+      $token = Auth::user()->createToken('admin');
+      return redirect()->back()->with(['updated' => 'Token regenerado.', 'token' => $token->plainTextToken, 'open' => true]);
+    } else {
+      $token = Auth::user()->createToken('admin');
+      return redirect()->back()->with(['created' => 'Token creado.', 'token' => $token->plainTextToken, 'open' => true]);
+    }
   }
 
   public function list()
@@ -121,8 +140,6 @@ class CouponController extends Controller
         ->subject('¡' . $userEmail->username . ' tu cupon ha llegado.')
         ->attachData($pdf->output(), 'cupon.pdf');
     });
-
-    // Mail::to($userEmail->email)->send(new CouponSent($userEmail, $couponStore));
 
     return response()->json(['send' => 'Cupón enviado.']);
   }

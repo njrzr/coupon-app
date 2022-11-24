@@ -22,6 +22,10 @@
       @if (url()->current() != url('/coupons'))
         <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/coupons'>Lista de cupones</a>
       @endif
+
+      @if (url()->current() != url('/view-token'))
+        <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/view-token'>Ver/Crear Token</a>
+      @endif
       <form action="/logout" method="POST">
         @csrf
         <button class="bg-red-400 px-4 py-2 font-semibold hover:bg-red-500 text-white rounded-lg transition duration-150">Salir</button>

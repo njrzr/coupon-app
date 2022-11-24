@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
   Route::get('/claimed', [CouponController::class, 'claimed'])->name('claimed');
   Route::get('/update', [CouponController::class, 'listUpdate'])->name('list-update');
   Route::post('/update', [CouponController::class, 'update'])->name('update');
+  Route::get('/view-token', [CouponController::class, 'tokenView'])->name('token-view');
+  Route::post('/create-token', [CouponController::class, 'createToken'])->name('token-create');
   Route::get('/dashboard', function () {
     return view('dashboard');
   })->name('dashboard');
