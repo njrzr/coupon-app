@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserEmailsTable extends Migration
+class CreateCouponsConfigsTable extends Migration
 {
   /**
    * Run the migrations.
@@ -13,12 +13,10 @@ class CreateUserEmailsTable extends Migration
    */
   public function up()
   {
-    Schema::create('user_emails', function (Blueprint $table) {
+    Schema::create('coupons_configs', function (Blueprint $table) {
       $table->id();
-      $table->string('name');
-      $table->string('email');
-      $table->string('phone');
-      $table->string('store_name');
+      $table->integer('discount')->default('5');
+      $table->integer('max_coupons')->default('100');
       $table->timestamps();
     });
   }
@@ -30,6 +28,6 @@ class CreateUserEmailsTable extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('user_emails');
+    Schema::dropIfExists('coupons_configs');
   }
 }

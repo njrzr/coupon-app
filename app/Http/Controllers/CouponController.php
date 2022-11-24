@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coupon;
+use App\Models\CouponsConfig;
 use App\Models\UserEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class CouponController extends Controller
@@ -116,34 +115,29 @@ class CouponController extends Controller
   public function sendCoupon(Request $request)
   {
     $request->validate([
-      'username' => ['required', 'string'],
+      'name' => ['required', 'string'],
       'phone' => ['required', 'numeric'],
-      'email' => ['required', 'email']
+      'email' => ['required', 'email'],
+      'store_name' => ['required', 'string'],
     ]);
 
-    $couponStore = Coupon::find($request['store-id']);
+    $config = CouponsConfig::first();
+
+    if (UserEmail::count() >= $config->max_coupons) return response()->json(['message' => 'Cupones agotados.'], 400);
 
     $userEmail = UserEmail::create([
-      'username' => $request->username,
+      'name' => $request->name,
       'email' => $request->email,
       'phone' => $request->phone,
-      'store_id' => $couponStore->id,
-      'store_name' => $couponStore->store
+      'store_name' => $request->store_name
     ]);
 
-    if ($couponStore->claimed >= $couponStore->coupon_quantity) return response()->json(['claimed' => 'Cupones agotados.'], 400);
+    $pdf = Pdf::loadView('email.coupon', ['user' => $userEmail, 'config' => $config])->setPaper([0, 0, 600, 300], 'portrait');
 
-    $couponStore->update([
-      'claimed' => $couponStore->claimed + 1
-    ]);
-
-    $pdf = Pdf::loadView('email.coupon', ['user' => $userEmail, 'store' => $couponStore]);
-
-    Mail::send('email.message', ['user' => $userEmail, 'store' => $couponStore], function ($message) use ($userEmail, $pdf) {
-      $message->from('no-reply@paradaonline.cat')
-        ->to($userEmail->email)
-        ->subject('¡' . $userEmail->username . ' tu cupon ha llegado.')
-        ->attachData($pdf->output(), 'cupon.pdf');
+    Mail::send('email.message', ['user' => $userEmail, 'config' => $config], function ($message) use ($userEmail, $pdf) {
+      $message->to($userEmail->email)
+        ->subject('¡' . $userEmail->name . ' tu cupon ha llegado.')
+        ->attachData($pdf->output(), 'coupon.pdf');
     });
 
     return response()->json(['send' => 'Cupón enviado.']);

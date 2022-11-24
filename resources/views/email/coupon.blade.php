@@ -8,15 +8,17 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: 'Helvetica'
       }
 
       .container {
         position: relative;
         background: url('coupon.webp') no-repeat;
         background-size: cover;
+        background-position: center center;
         display: flex;
-        width: 600px;
-        height: 300px;
+        width: 800px;
+        height: 400px;
         margin: auto;
         overflow: hidden;
       }
@@ -24,8 +26,10 @@
       .code {
         position: absolute;
         width: 300px;
-        padding-right: 10px;
-        left: 0;
+        padding-right: 30px;
+        left: 140px;
+        top:60px;
+
       }
 
       .qr-image {
@@ -41,48 +45,67 @@
       .code-text {
         position: relative;
         font-weight: 600;
-        color: #15803d;
-        left: 200px;
-        top: 60px;
+        font-size:28px;
+        color: #c36332;
+        left: 180px;
+        top: 55px;
       }
 
       .store {
         position: absolute;
         width: 300px;
-        left: 300px;
-        padding-left: 10px;
+        left: 430px;
+        padding-left: 80px;
+        top:50px;
       }
 
       .coupon {
-        position: absolute;
         transform: rotate(-90deg);
         transform-origin: top left;
         text-transform: uppercase;
-        left: 0;
-        top: 120px;
-        font-size: 1.2rem;
+        left: 63px;
+        top: 130px;
+        position:absolute;
+        font-size: 1.3rem;
         font-weight: 600;
-        color: #15803d;
       }
 
       .discount {
         position: absolute;
-        font-size: 5rem;
-        left: 22px;
-        top: 35px;
+        font-size: 7rem;
+        left: 82px;
+        top: 20px;
         font-weight: 600;
-        color: #15803d;
       }
 
-      .username, .store-name, .weblink {
-        position: relative;
-        font-size: 24px;
-        left: 0px;
-        top: 130px;
-        font-weight: 600;
-        font-style: italic;
-        color: #15803d;
+      .discount, .coupon {
+        color: #ef3c37;
+        font-weight: bolder;
       }
+
+      .store-name, .weblink {
+        position: relative;
+        font-size: 38px;
+        left: 0px;
+        top: 140px;
+        font-weight: bold;
+        color: #c36332;
+      }
+
+      .name {
+        position: relative;
+        font-size: 38px;
+        left: 0px;
+        top: 140px;
+        font-style: italic;
+        color: #c36332;
+      }
+
+       .weblink{
+        font-size: 28px;
+        margin-left:-50px;
+        margin-top:10px;
+       }
     </style>
   </head>
 
@@ -90,14 +113,14 @@
     <div class="container">
       <div class="code">
         <img class="qr-image" src="qr-code.png" alt="Codigo QR">
-        <p class="code-text">{{ $store->code }}</p>
+        <p class="code-text">{{ $user->id }}</p>
       </div>
 
       <div class="store">
         <p class="coupon">cupon</p>
-        <p class="discount">{{ $store->coupon_discount }}€</p>
-        <p class="username">{{ $user->username }}</p>
-        <p class="store-name">{{ $store->store }}</p>
+        <p class="discount">{{ $config->discount }}€</p>
+        <p class="store-name">{{ $user->store_name }}</p>
+        <p class="name">{{ $user->name }}</p>
         <p class="weblink">www.paradaonline.cat</p>
       </div>
     </div>

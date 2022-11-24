@@ -11,9 +11,5 @@
     @include('navbar')
     @yield('content')
 
-    @if (url()->current() == url('/'))
-      <p class="relative w-8/12 mx-auto my-12 uppercase font-bold text-center text-5xl">bienvenido</p>
-      <p class="relative w-8/12 mx-auto my-12 uppercase font-bold text-center text-2xl">elige cualquiera de las opciones arriba a la derecha</p>
-    @endif
   </body>
 </html>

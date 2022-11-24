@@ -16,7 +16,7 @@
         <p class="border border-slate-400 p-1">{{ $user->email }}</p>
         <p class="border border-slate-400 p-1">{{ $user->phone }}</p>
         <p class="border border-slate-400 p-1">{{ $user->store_name }}</p>
-        <p class="border border-slate-400 p-1 text-right">{{ $user->created_at->format('d/m/Y') }}</p>
+        <p class="border border-slate-400 p-1 text-right">{{ $user->created_at->format('d/m/Y h:s') }}</p>
       </div>
     @endforeach
   </div>
