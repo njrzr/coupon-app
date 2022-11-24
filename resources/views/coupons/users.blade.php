@@ -12,7 +12,7 @@
 
     @foreach ($users as $user)
       <div class="grid md:grid-cols-5 gap-1 w-full border border-slate-400 md:border-none p-2 md:p-0">
-        <p class="border border-slate-400 p-1">{{ $user->username }}</p>
+        <p class="border border-slate-400 p-1">{{ $user->name }}</p>
         <p class="border border-slate-400 p-1">{{ $user->email }}</p>
         <p class="border border-slate-400 p-1">{{ $user->phone }}</p>
         <p class="border border-slate-400 p-1">{{ $user->store_name }}</p>
