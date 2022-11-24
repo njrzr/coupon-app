@@ -26,7 +26,6 @@ class CouponController extends Controller
   public function claimed()
   {
     $claimed = Coupon::paginate(10);
-
     return view('coupons/claimed', ['claimed' => $claimed]);
   }
 
@@ -34,6 +33,12 @@ class CouponController extends Controller
   {
     if (isset(Auth::user()->tokens[0]) !== true) return view('/token', ['created' => false]);
     return view('/token', ['created' => true]);
+  }
+
+  public function userClaimed()
+  {
+    $users = UserEmail::paginate(10);
+    return view('coupons/users', ['users' => $users]);
   }
 
   public function create(Request $request)

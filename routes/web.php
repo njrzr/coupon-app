@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/new', [CouponController::class, 'new'])->name('new');
   Route::post('/create', [CouponController::class, 'create'])->name('create');
   Route::get('/claimed', [CouponController::class, 'claimed'])->name('claimed');
+  Route::get('/user-claimed', [CouponController::class, 'userClaimed'])->name('user-claimed');
   Route::get('/update', [CouponController::class, 'listUpdate'])->name('list-update');
   Route::post('/update', [CouponController::class, 'update'])->name('update');
   Route::get('/view-token', [CouponController::class, 'tokenView'])->name('token-view');

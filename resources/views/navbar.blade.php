@@ -7,15 +7,19 @@
         <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/'>Regresar</a>
       @endif
 
-      @if (url()->current() != url('new'))
+      @if (url()->current() != url('/new'))
         <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/new'>Crear</a>
       @endif
 
-      @if (url()->current() != url('claimed'))
+      @if (url()->current() != url('/claimed'))
         <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/claimed'>Canjeados</a>
       @endif
 
-      @if (url()->current() != url('update'))
+      @if (url()->current() != url('/user-claimed'))
+        <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/user-claimed'>Usuarios</a>
+      @endif
+
+      @if (url()->current() != url('/update'))
         <a class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/update'>Actualizar</a>
       @endif
 
