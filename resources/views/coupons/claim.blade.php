@@ -17,18 +17,12 @@
       <form class="grid grid-cols-2 mb-1 gap-2" action="/claim" method="POST">
         @csrf
         <input type="hidden" name="store-id" value="{{ $coupon->id }}" />
-        <label class="p-1 font-semibold" for="username">Nombre: </label>
-        <input class="text-black p-1 rounded-sm" type="text" id="username" name="username" placeholder="ej: John Doe" required />
-        @error('username')
-        @enderror
+        <label class="p-1 font-semibold" for="name">Nombre: </label>
+        <input class="text-black p-1 rounded-sm" type="text" id="name" name="name" placeholder="ej: John Doe" required />
         <label class="p-1 font-semibold" for="phone">Telefono: </label>
         <input class="text-black p-1 rounded-sm" type="tel" id="phone" name="phone" placeholder="ej: +1555444333" required />
-        @error('phone')
-        @enderror
         <label class="p-1 font-semibold" for="email">Correo: </label>
         <input class="text-black p-1 rounded-sm" type="email" id="email" name="email" placeholder="ej: johndoe@mail.com" required />
-        @error('email')
-        @enderror
 
         @if ($coupon->coupon_quantity - $coupon->claimed != 0)
           <button class="mt-2 font-semibold rounded-sm col-span-2 p-2 mx-auto bg-slate-400 active:bg-opacity-75">Reclamar</button>

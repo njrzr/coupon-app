@@ -8,7 +8,7 @@
     </div>
   @endif
 
-  <p class="w-full my-4 text-4xl text-center">Actualizar cupones.</p>
+  <p class="w-full my-2 text-4xl text-center">Actualizar cupones</p>
 
   <div class="grid gap-2 mb-2 p-1 rounded-lg w-full">
     <div class="grid md:grid-cols-6 gap-1 w-full bg-slate-300 rounded-lg p-2">

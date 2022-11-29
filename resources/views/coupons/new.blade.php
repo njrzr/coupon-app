@@ -8,9 +8,10 @@
     </div>
   @endif
 
+  <p class="w-full text-center my-2 text-2xl md:text-4xl">Crear cupon</p>
+
   <form class="relative flex flex-wrap mx-auto my-2 p-4 rounded-lg bg-slate-300" action="/create" method="POST" enctype="multipart/form-data">
     @csrf
-    <p class="w-full text-center mb-4 text-2xl md:text-4xl">Crear cupon.</p>
     <label class="md:w-3/12 mt-1 p-1 font-semibold text-xl md:text-2xl" for="store">Tienda</label>
     <input class="w-full md:w-9/12 mb-1 p-1 text-base md:text-xl rounded-sm" id="store" name="store" type="text" placeholder="ej: H&M" value="{{ old('store') }}" required />
 

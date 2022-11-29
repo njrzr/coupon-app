@@ -1,14 +1,14 @@
 @extends('index')
 
 @section('content')
-  @if (session('claimed'))
+  @if (session('send'))
     <div class="relative flex items-center justify-center w-full mt-2 p-2 bg-blue-400 rounded-lg" x-data="{ open: {{ session('open') }} }" x-show="open">
-      <p class="text-center text-xl text-white font-semibold">{{ session('claimed') }}</p>
+      <p class="text-center text-xl text-white font-semibold">{{ session('send') }}</p>
       <button class="absolute right-4 text-white bg-blue-300 px-2 rounded-sm" x-on:click="open = !open">x</button>
     </div>
   @endif
 
-  <p class="w-full my-4 text-2xl md:text-4xl text-center">Cupones disponibles.</p>
+  <p class="w-full my-4 text-2xl md:text-4xl text-center">Cupones disponibles</p>
 
   <div class="grid md:grid-cols-4 gap-2 mx-auto mb-2 p-1 rounded-lg w-full">
     @foreach ($coupons as $coupon)

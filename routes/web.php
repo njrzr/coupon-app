@@ -15,20 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 // This route list the coupons.
-Route::get('/coupons', [CouponController::class, 'list'])->name('coupons');
+Route::get('/coupons', [CouponController::class, 'listCouponView'])->name('coupons');
 
 // These routes are for claim coupons through the app
-Route::get('/claim/{id}', [CouponController::class, 'claim'])->name('claim');
+Route::get('/claim/{id}', [CouponController::class, 'claimView'])->name('claim');
 Route::post('/claim', [CouponController::class, 'sendCoupon'])->name('send-coupon');
 
-Route::get('/', [CouponController::class, 'admin'])->name('admin');
+Route::get('/', [CouponController::class, 'adminView'])->name('admin');
 
 Route::middleware('auth')->group(function () {
-  Route::get('/new', [CouponController::class, 'new'])->name('new');
+  Route::get('/new', [CouponController::class, 'createView'])->name('new');
   Route::post('/create', [CouponController::class, 'create'])->name('create');
-  Route::get('/claimed', [CouponController::class, 'claimed'])->name('claimed');
-  Route::get('/user-claimed', [CouponController::class, 'userClaimed'])->name('user-claimed');
-  Route::get('/update', [CouponController::class, 'listUpdate'])->name('list-update');
+  Route::get('/claimed', [CouponController::class, 'claimedView'])->name('claimed');
+  Route::get('/user-claimed', [CouponController::class, 'userClaimedView'])->name('user-claimed');
+  Route::get('/update', [CouponController::class, 'listUpdateView'])->name('list-update');
   Route::post('/update', [CouponController::class, 'update'])->name('update');
   Route::get('/view-token', [CouponController::class, 'tokenView'])->name('token-view');
   Route::post('/create-token', [CouponController::class, 'createToken'])->name('token-create');
