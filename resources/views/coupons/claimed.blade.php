@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('content')
-  <div class="relative flex flex-col items-center justify-between gap-1 bg-slate-300 md:w-11/12 mx-auto my-1 p-2 rounded-lg overflow-x-auto">
+  <div class="relative flex flex-col items-center justify-between gap-1 bg-slate-300 w-full my-2 p-2 rounded-lg overflow-x-auto">
     <div class="grid md:grid-cols-5 gap-1 w-full border border-slate-400 md:border-none p-2 md:p-0 rounded-lg">
       <p class="font-semibold text-white bg-slate-400  p-1">Tienda</p>
       <p class="font-semibold text-white bg-slate-400  p-1">Codigo</p>
@@ -23,7 +23,7 @@
     @endforeach
   </div>
 
-  <div class="w-11/12 mx-auto">
+  <div class="w-full">
     {{ $claimed->links() }}
   </div>
 @endsection

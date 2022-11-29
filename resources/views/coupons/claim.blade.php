@@ -1,8 +1,8 @@
 @extends('index')
 
 @section('content')
-  <div class="relative flex items-center justify-center mt-8 p-2">
-    <div class="relative flex flex-col items-center justify-center mx-auto p-4 bg-slate-500 text-white rounded-lg">
+  <div class="relative flex items-center justify-center my-2">
+    <div class="relative flex flex-col items-center justify-center p-2 bg-slate-500 text-white rounded-lg">
       <p class="text-2xl md:text-4xl mb-4 font-semibold">Reclamar cupón</p>
 
       <picture class="w-16 md:w-32">

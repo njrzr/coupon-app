@@ -2,15 +2,15 @@
 
 @section('content')
   @if (session('update'))
-    <div class="relative flex items-center justify-center w-11/12 mx-auto mt-2 p-2 bg-blue-400 rounded-lg" x-data="{ open: {{ session('open') }} }" x-show="open">
+    <div class="relative flex items-center justify-center w-full mt-2 p-2 bg-blue-400 rounded-lg" x-data="{ open: {{ session('open') }} }" x-show="open">
       <p class="text-center text-xl text-white font-semibold">{{ session('update') }}</p>
       <button class="absolute right-4 text-white bg-blue-300 px-2 rounded-sm" x-on:click="open = !open">x</button>
     </div>
   @endif
 
-  <p class="w-11/12 mx-auto my-4 text-4xl text-center">Actualizar cupones.</p>
+  <p class="w-full my-4 text-4xl text-center">Actualizar cupones.</p>
 
-  <div class="grid gap-2 mx-auto mb-2 p-1 rounded-lg w-11/12">
+  <div class="grid gap-2 mb-2 p-1 rounded-lg w-full">
     <div class="grid md:grid-cols-6 gap-1 w-full bg-slate-300 rounded-lg p-2">
       <p class="text-center font-semibold text-white bg-slate-400 rounded-lg p-1">Imagen</p>
       <p class="text-center font-semibold text-white bg-slate-400 rounded-lg p-1">Tienda</p>
@@ -37,7 +37,7 @@
       </div>
     @endforeach
 
-    <div class="w-11/12 mx-auto">
+    <div class="w-full">
       {{ $coupons->links() }}
     </div>
   </div>

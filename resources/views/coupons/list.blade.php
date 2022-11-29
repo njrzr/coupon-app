@@ -2,15 +2,15 @@
 
 @section('content')
   @if (session('claimed'))
-    <div class="relative flex items-center justify-center w-11/12 mx-auto mt-2 p-2 bg-blue-400 rounded-lg" x-data="{ open: {{ session('open') }} }" x-show="open">
+    <div class="relative flex items-center justify-center w-full mt-2 p-2 bg-blue-400 rounded-lg" x-data="{ open: {{ session('open') }} }" x-show="open">
       <p class="text-center text-xl text-white font-semibold">{{ session('claimed') }}</p>
       <button class="absolute right-4 text-white bg-blue-300 px-2 rounded-sm" x-on:click="open = !open">x</button>
     </div>
   @endif
 
-  <p class="w-11/12 mx-auto my-4 text-2xl md:text-4xl text-center">Cupones disponibles.</p>
+  <p class="w-full my-4 text-2xl md:text-4xl text-center">Cupones disponibles.</p>
 
-  <div class="grid md:grid-cols-4 gap-2 mx-auto mb-2 p-1 rounded-lg w-11/12">
+  <div class="grid md:grid-cols-4 gap-2 mx-auto mb-2 p-1 rounded-lg w-full">
     @foreach ($coupons as $coupon)
       @if ($coupon->coupon_quantity - $coupon->claimed != 0)
         <a class="relative grid grid-cols-6 gap-2 bg-slate-300 md:hover:bg-slate-200 rounded-lg p-2 cursor-pointer drop-shadow-md transition duration-100 overflow-hidden" href="/claim/{{ $coupon->id }}">
@@ -39,7 +39,7 @@
     @endforeach
   </div>
 
-  <div class="w-11/12 mx-auto">
+  <div class="w-full">
     {{ $coupons->links() }}
   </div>
 @endsection
