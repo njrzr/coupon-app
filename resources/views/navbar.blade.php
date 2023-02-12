@@ -23,10 +23,6 @@
         <a title="Actualizar" class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/update'><i class="fa-solid fa-pen-to-square"></i> <span x-show="menu">Actualizar</span></a>
       @endif
 
-      @if (url()->current() != url('/coupons'))
-        <a title="Lista de cupones" class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/coupons'><i class="fa-solid fa-table"></i> <span x-show="menu">Lista de cupones</span></a>
-      @endif
-
       @if (url()->current() != url('/view-token'))
         <a title="Crear/Recrear Token" class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/view-token'><i class="fa-solid fa-user-secret"></i> <span x-show="menu">Crear/Recrear Token</span></a>
       @endif
@@ -37,6 +33,10 @@
     </div>
   @else
     <div class="grid gap-2">
+      @if (url()->current() != url('/coupons'))
+        <a title="Lista de cupones" class="bg-slate-400 px-4 py-2 font-semibold hover:bg-slate-500 text-white rounded-lg transition duration-150" href='/coupons'><i class="fa-solid fa-table"></i> <span x-show="menu">Lista de cupones</span></a>
+      @endif
+
       <a title="Registrar" class="bg-blue-400 px-4 py-2 font-semibold hover:bg-blue-500 text-white rounded-lg transition duration-150" href='/register'><i class="fa-solid fa-user-plus"></i> <span x-show="menu">Registrar</span></a>
       <a title="Login" class="bg-green-400 px-4 py-2 font-semibold hover:bg-green-500 text-white rounded-lg transition duration-150" href='/login'><i class="fa-solid fa-right-to-bracket"></i> <span x-show="menu">Login</span></a>
     </div>

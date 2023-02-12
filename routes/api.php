@@ -21,6 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::middleware('auth:sanctum')->group(function () {
-  Route::post('/send', [ApiCouponController::class, 'apiSendCoupon'])->name('send-coupon');
-  Route::post('/create', [ApiCouponController::class, 'apiCreate'])->name('create-coupon');
+  Route::post('/send', [ApiCouponController::class, 'apiSendCoupon'])->name('api-send-coupon');
+  Route::post('/create', [ApiCouponController::class, 'apiCreate'])->name('api-create-coupon');
 });
